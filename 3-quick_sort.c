@@ -7,18 +7,18 @@
 */
 void swap(int *array, ssize_t item1, ssize_t item2)
 {
-	int temp;
+	int tmp;
 
-	temp = array[item1];
+	tmp = array[item1];
 	array[item1] = array[item2];
-	array[item2] = temp;
+	array[item2] = tmp;
 }
 /**
  *@array: array
  *@low: low array element
  *@hight: hight array element
  *@size: size array
- *Return: return the position of the last element sorted
+ *Return: return the position of the hight element sorted
  */
 int lomuto_partition(int *array, ssize_t low, ssize_t hight, size_t size)
 {
@@ -47,21 +47,21 @@ int lomuto_partition(int *array, ssize_t low, ssize_t hight, size_t size)
 /**
  *qs - qucksort algorithm implementation
  *@array: array
- *@first: first array element
- *@last: last array element
+ *@low: low array element
+ *@hight: hight array element
  *@size: array size
  */
-void qs(int *array, ssize_t first, ssize_t last, int size)
+void qs(int *array, ssize_t low, ssize_t hight, int size)
 {
 	ssize_t position = 0;
 
 
-	if (first < last)
+	if (low < hight)
 	{
-		position = lomuto_partition(array, first, last, size);
+		position = lomuto_partition(array, low, hight, size);
 
-		qs(array, first, position - 1, size);
-		qs(array, position + 1, last, size);
+		qs(array, low, position - 1, size);
+		qs(array, position + 1, hight, size);
 	}
 }
 /**
