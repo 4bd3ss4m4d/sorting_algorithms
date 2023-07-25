@@ -14,6 +14,7 @@ void swap(int *array, ssize_t item1, ssize_t item2)
 	array[item2] = tmp;
 }
 /**
+ *lomuto_partition - lomuto partition sorting scheme implementation
  *@array: array
  *@low: low array element
  *@hight: hight array element
@@ -23,15 +24,15 @@ void swap(int *array, ssize_t item1, ssize_t item2)
 int lomuto_partition(int *array, ssize_t low, ssize_t hight, size_t size)
 {
 	int pivot = array[hight];
-	ssize_t current = low, finder;
+	ssize_t current = low, i;
 
-	for (finder = low; finder < hight; finder++)
+	for (i = low; i < hight; i++)
 	{
-		if (array[finder] < pivot)
+		if (array[i] < pivot)
 		{
-			if (array[current] != array[finder])
+			if (array[current] != array[i])
 			{
-				swap(array, current, finder);
+				swap(array, current, i);
 				print_array(array, size);
 			}
 			current++;
@@ -65,7 +66,7 @@ void qs(int *array, ssize_t low, ssize_t hight, int size)
 	}
 }
 /**
- *quick_sort - prepare the terrain to quicksort algorithm
+ *quick_sort - prepare the quicksort algorithm
  *@array: array
  *@size: array size
  */
